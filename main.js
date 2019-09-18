@@ -1,7 +1,7 @@
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
-const {app, BrowserWindow, Menu} = electron;
+const {app, BrowserWindow, Menu, ipcMain} = electron;
 const platform = process.platform == 'darwin' ? 'MAC' : 'WIN';
 
 let mainWindow; // global reference to window onject. w/o this the windows closes auto during garbage clllection.
@@ -12,7 +12,12 @@ function createWindow(){
   mainWindow = new BrowserWindow({
     width:800,
     height:600,
-    icon:__dirname+'/img/slytherin.png'
+    icon:__dirname+'/img/slytherin.png',
+
+    webPreferences: {
+      nodeIntegration: true
+    }
+
   });
   // Load index.html
   mainWindow.loadURL(url.format({
@@ -21,8 +26,6 @@ function createWindow(){
     slashes: true
   }));
 
-  // Open DevTools
-  // mainWindow.webContents.openDevTools();
   // Build menu from template
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   //  Insert Menu
@@ -41,7 +44,10 @@ function createAddWindow(){
   addWindow = new BrowserWindow({
     width:300,
     height:200,
-    title:'Add Shopping List Item'
+    title:'Add Shopping List Item',
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
   // Load index.html
   addWindow.loadURL(url.format({
@@ -55,10 +61,20 @@ function createAddWindow(){
   });
 }
 
+
 // Begin Script
 app.on('ready', createWindow);
 
-// Create menu templates
+
+//  ** CATCH CRUD  **  //
+// catch item:add
+ipcMain.on('item:add', function(e, item){
+  mainWindow.webContents.send('item:add', item);
+  addWindow.close();
+});
+
+
+//  ** MENU TEMPLATES  ** //
 const mainMenuTemplate = [
   {
       label:'File',
@@ -79,7 +95,6 @@ const mainMenuTemplate = [
             app.quit();
           }
         }
-
       ]
   }
 ];
