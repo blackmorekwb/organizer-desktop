@@ -7,8 +7,10 @@ const platform = process.platform == 'darwin' ? 'MAC' : 'WIN';
 let mainWindow; // global reference to window onject. w/o this the windows closes auto during garbage clllection.
 let addWindow;
 
+// * TODO * - Inheritance of create window. pass in args for dimensions, etc.
+
 function createWindow(){
-  // create new window
+  // CREATE new window
   mainWindow = new BrowserWindow({
     width:800,
     height:600,
@@ -19,14 +21,13 @@ function createWindow(){
     }
 
   });
-  // Load index.html
+  // LOAD index.html
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'mainWindow.html'),
     protocol: 'file:', // http?
     slashes: true
   }));
-
-  // Build menu from template
+  // BUILD menu from template
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   //  Insert Menu
   Menu.setApplicationMenu(mainMenu)
@@ -41,7 +42,7 @@ function createWindow(){
 // Handle add / create window
 function createAddWindow(){
   // create new window
-  addWindow = new BrowserWindow({
+  let addWindow = new BrowserWindow({
     width:300,
     height:200,
     title:'Add Shopping List Item',
@@ -70,7 +71,7 @@ app.on('ready', createWindow);
 // catch item:add
 ipcMain.on('item:add', function(e, item){
   mainWindow.webContents.send('item:add', item);
-  addWindow.close();
+  mainWindow.close();
 });
 
 
@@ -128,3 +129,11 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (mainWindow === null) {
+    createWindow()
+  }
+})
