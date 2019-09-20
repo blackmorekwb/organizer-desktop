@@ -14,7 +14,7 @@ process.env.NODE_ENV = 'development';
 function createWindow(){
   // CREATE new window
   mainWindow = new BrowserWindow({
-    width:600,
+    width:800,
     height:600,
     icon:__dirname+'/img/slytherin.png',
 
@@ -45,10 +45,9 @@ function createWindow(){
 function createAddWindow(){
   // create new window
   addWindow = new BrowserWindow({
-    width:450,
-    height:500,
-    icon:__dirname+'/img/slytherin.png',
-    title:'Add Items',
+    width:300,
+    height:200,
+    title:'Add Shopping List Item',
     webPreferences: {
       nodeIntegration: true
     }
