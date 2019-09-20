@@ -1,42 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <title>Organizer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Organizer</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
-  <h1>Oranizer</h1>
-  <ul></ul>
-
-
-  <script>
-    const electron = require( 'electron');
-    const {ipcRenderer} = electron;
-    const ul = document.querySelector('ul');
-
-    ipcRenderer.on('item:add', function(e,item){
-      const li = document.createElement('li');
-      const itemText = document.createTextNode(item);
-      ul.className = 'collection';
-      li.className = 'collection-item';
-      li.appendChild(itemText);
-      ul.appendChild(li);
-    });
-
-    ipcRenderer.on('item:clear', function(){
-      ul.className = '';
-      ul.innerHTML = '';
-    });
-
-    ul.addEventListener('dblclick', removeItem);
-
-    function removeItem(e){
-      e.target.remove();
-      if(ul.children.length == 0){
-        ul.className = '';
-      }
-    }
-
-  </script>
-
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><img src="assets/img/slytherin.png" style="height: 89px;width: 97px;"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mx-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Get Started</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Tutorials</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Help</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Upgrade</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Sign In</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>
