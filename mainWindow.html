@@ -4,7 +4,6 @@
   <title>Organizer</title>
 </head>
 <body>
-
   <h1>Oranizer</h1>
   <ul></ul>
 
@@ -17,10 +16,13 @@
     ipcRenderer.on('item:add', function(e,item){
       const li = document.createElement('li');
       const itemText = document.createTextNode(item);
+      ul.className = 'collection';
+      li.className = 'collection-item';
       li.appendChild(itemText);
       ul.appendChild(li);
     });
 
+    
 
   </script>
 

@@ -7,8 +7,10 @@ const platform = process.platform == 'darwin' ? 'MAC' : 'WIN';
 let mainWindow; // global reference to window onject. w/o this the windows closes auto during garbage clllection.
 let addWindow;
 
-// * TODO * - Inheritance of create window. pass in args for dimensions, etc.
+// SET ENV
+process.env.NODE_ENV = 'development';
 
+// * TODO * - Inheritance of create window. pass in args for dimensions, etc.
 function createWindow(){
   // CREATE new window
   mainWindow = new BrowserWindow({
@@ -42,7 +44,7 @@ function createWindow(){
 // Handle add / create window
 function createAddWindow(){
   // create new window
-  let addWindow = new BrowserWindow({
+  addWindow = new BrowserWindow({
     width:300,
     height:200,
     title:'Add Shopping List Item',
@@ -71,7 +73,9 @@ app.on('ready', createWindow);
 // catch item:add
 ipcMain.on('item:add', function(e, item){
   mainWindow.webContents.send('item:add', item);
-  mainWindow.close();
+  addWindow.close();
+  // Still have a reference to addWindow in memory. Need to reclaim memory (Garbage collection)
+  //addWindow = null;
 });
 
 
@@ -82,6 +86,7 @@ const mainMenuTemplate = [
       submenu:[
         {
           label: 'Add Item',
+          accelerator: platform == 'MAC' ? 'Command+A' : 'Ctrl+A',
           click(){
             createAddWindow();
           }
