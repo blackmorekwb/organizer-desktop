@@ -86,13 +86,17 @@ const mainMenuTemplate = [
       submenu:[
         {
           label: 'Add Item',
-          accelerator: platform == 'MAC' ? 'Command+A' : 'Ctrl+A',
+          accelerator: platform == 'MAC' ? '1' : '1',
           click(){
             createAddWindow();
           }
         },
         {
-          label: 'Clear Items'
+          label: 'Clear Items',
+          click(){
+            mainWindow.webContents.send('item:clear');
+
+          }
         },
         {
           label: 'Quit',

@@ -22,7 +22,19 @@
       ul.appendChild(li);
     });
 
-    
+    ipcRenderer.on('item:clear', function(){
+      ul.className = '';
+      ul.innerHTML = '';
+    });
+
+    ul.addEventListener('dblclick', removeItem);
+
+    function removeItem(e){
+      e.target.remove();
+      if(ul.children.length == 0){
+        ul.className = '';
+      }
+    }
 
   </script>
 
