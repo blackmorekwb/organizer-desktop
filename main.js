@@ -14,7 +14,7 @@ process.env.NODE_ENV = 'development';
 function createWindow(){
   // CREATE new window
   mainWindow = new BrowserWindow({
-    width:600,
+    width:992,
     height:600,
     icon:__dirname+'/img/slytherin.png',
 
