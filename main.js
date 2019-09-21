@@ -53,10 +53,10 @@ function createAddWindow(){
       nodeIntegration: true
     }
   });
-  // Load index.html
+  // Load addWindow.html
   addWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'addWindow.html'),
-    protocol: 'file:', // http?
+    protocol: 'file:',
     slashes: true
   }));
   // Garbage collection Handle
