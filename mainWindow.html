@@ -70,10 +70,50 @@
             </div>
         </div>
     </div>
+
+    <!-- Just for testing purposes -->
+    <div class="test-box">
+      <ul>
+        <li>one</li>
+        <li>two</li>
+      </ul>
+    </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!--  <script src="assets/js/main.js"></script>   -->
+
+    <script>
+      const electron = require('electron');
+      const {ipcRenderer} = electron;
+      const ul = document.querySelector('.test-box ul');
+
+      ipcRenderer.on('item:add', function(e, item){
+        const li = document.createElement('li');
+        const itemText = document.createTextNode(item);
+        ul.className = 'collection';
+        li.className = 'collection-item';
+        li.appendChild(itemText);
+        ul.appendChild(li);
+      });
+
+      ipcRenderer.on('item:clear', function(){
+        ul.className = '';
+        ul.innerHTML = '';
+      });
+
+      ul.addEventListener('dblclick', removeItem);
+
+      function removeItem(e){
+        event.target.remove();
+        if(ul.children.length == 0){
+          ul.className = '';
+        }
+      }
+    </script>
+
+
 </body>
 
 </html>

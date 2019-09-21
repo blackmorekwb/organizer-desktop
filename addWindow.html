@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Add SHopping List Item</title>
+    <title>Add Shopping List Items</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
@@ -16,7 +15,7 @@
 
 <body>
     <div class="contact-clean">
-        <form method="post">
+        <form>
             <h2 class="text-center">Add Items</h2>
             <div class="form-group"><input class="form-control" type="text" id="item" name="name" placeholder="Name" autofocus></div>
             <div class="form-group"><input class="form-control" type="text" name="Name" placeholder="Other..."></div>
@@ -25,7 +24,11 @@
                 <div class="btn-group">
                   <button class="btn btn-primary" type="submit">Add</button>
                   <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    <div class="dropdown-menu" role="menu">
+                      <a class="dropdown-item" role="presentation" href="#">First Item</a>
+                      <a class="dropdown-item" role="presentation" href="#">Second Item</a>
+                      <a class="dropdown-item" role="presentation" href="#">Third Item</a>
+                    </div>
                 </div>
             </div>
         </form>
@@ -33,19 +36,20 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
 
     <script>
       const electron = require('electron');
       const {ipcRenderer} = electron;
-
       const form = document.querySelector('form');
-      form.addEventListener('submit', submitForm);
-      console.log('fghdfg13');
-      function submitForm(e){
-        console.log('rh rh 123 123');
-        e.preventDefault();   // prevent default of saving to a file.
 
+      // this whole listener can be in the html tag, with onSubmit=, call to function
+      form.addEventListener('submit', submitForm);
+
+      function submitForm(e){
+        e.preventDefault();   // prevent default of saving to a file.
+        // So in this case, we should change it to be item.NAME or text,
+          // so that we can have other values attached to it.
         const item = document.querySelector('#item').value;
         ipcRenderer.send('item:add', item);
       }
