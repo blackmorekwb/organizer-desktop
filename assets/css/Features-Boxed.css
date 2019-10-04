@@ -7,13 +7,13 @@
   color: #7d8285;
 }
 
+/* //  INTRO / HEADER    // */
 .features-boxed h2 {
   font-weight: bold;
-  margin-bottom: 40px;
-  padding-top: 40px;
+  margin-bottom: 25px;
+  padding-top: 25px;
   color: inherit;
 }
-
 @media (max-width:767px) {
   .features-boxed h2 {
     margin-bottom: 25px;
@@ -21,28 +21,29 @@
     font-size: 24px;
   }
 }
-
 .features-boxed .intro {
   font-size: 16px;
   max-width: 500px;
   margin: 0 auto;
 }
-
 .features-boxed .intro p {
   margin-bottom: 0;
 }
 
+/* // FEATURE BOX / ITEMS  // */
 .features-boxed .features {
   padding: -17px 0;
 }
-
+.features-boxed .features .col-center {
+  float: none;
+  margin: 0 auto;
+}
 .features-boxed .item {
   text-align: center;
 }
-
 .features-boxed .item .box {
   text-align: center;
-  width: 80%;
+  width: 100%;
   padding: 20px;
   background-color: #fff;
   margin-bottom: 25px;
@@ -56,25 +57,28 @@
 
   background: linear-gradient(135deg, rgba(19, 176, 223, 0.26) 0%, rgba(19, 176, 223, 0.26) 23%,rgba(16, 160, 197, 0.26) 23%, rgba(16, 160, 197, 0.26) 65%,rgba(13, 144, 172, 0.26) 65%, rgba(13, 144, 172, 0.26) 70%,rgba(9, 129, 146, 0.26) 70%, rgba(9, 129, 146, 0.26) 74%,rgba(6, 113, 121, 0.26) 74%, rgba(6, 113, 121, 0.26) 90%,rgba(3, 97, 95, 0.26) 90%, rgba(3, 97, 95, 0.26) 100%),linear-gradient(45deg, rgba(65, 234, 230, 0.26) 0%, rgba(65, 234, 230, 0.26) 28%,rgba(88, 192, 215, 0.26) 28%, rgba(88, 192, 215, 0.26) 55%,rgba(110, 150, 201, 0.26) 55%, rgba(110, 150, 201, 0.26) 66%,rgba(133, 107, 186, 0.26) 66%, rgba(133, 107, 186, 0.26) 80%,rgba(155, 65, 172, 0.26) 80%, rgba(155, 65, 172, 0.26) 85%,rgba(178, 23, 157, 0.26) 85%, rgba(178, 23, 157, 0.26) 100%),linear-gradient(90deg, rgb(27, 194, 246) 0%, rgb(27, 194, 246) 6%,rgb(39, 174, 237) 6%, rgb(39, 174, 237) 32%,rgb(50, 155, 229) 32%, rgb(50, 155, 229) 40%,rgb(62, 135, 220) 40%, rgb(62, 135, 220) 66%,rgb(74, 116, 211) 66%, rgb(74, 116, 211) 72%,rgb(86, 96, 202) 72%, rgb(86, 96, 202) 86%,rgb(97, 77, 194) 86%, rgb(97, 77, 194) 96%,rgb(109, 57, 185) 96%, rgb(109, 57, 185) 100%)
 }
-
 .features-boxed .item .box:hover {
-  transform: scale(1.20);
+  transform: scale(1.10);
+}
+@media (min-width:991.97px) {
+  .features-boxed .item .box:hover {
+    transform: scale(1.20);
+  }
 }
 
+/* // INNER BUTTON  // */
 .features-boxed .item .icon {
   font-size: 70px;
   color: #eef4f7;
   margin-top: 5px;
   margin-bottom: 10px;
 }
-
 .features-boxed .item .name {
   font-weight: bold;
   font-size: 22px;
   margin-top: 5;
   color: #eef4f7;
 }
-
 .features-boxed .item .description {
   font-size: 15px;
   margin-top: 15px;
