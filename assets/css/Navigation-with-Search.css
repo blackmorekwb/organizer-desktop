@@ -110,10 +110,9 @@
 }
 
 .navbar-light .navbar-brand {
-  background-image: url("../../assets/img/slytherin.png");
+  background-image: url("../../assets/img/b-logo.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   font-size: 29px;
 }
-

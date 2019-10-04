@@ -16,7 +16,7 @@ function createWindow(){
   mainWindow = new BrowserWindow({
     width:800,
     height:600,
-    icon:__dirname+'/img/slytherin.png',
+    icon:__dirname+'/assets/img/b-logo.png',
 
     webPreferences: {
       nodeIntegration: true

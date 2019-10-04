@@ -16,7 +16,7 @@ function createWindow(){
   mainWindow = new BrowserWindow({
     width:1050,
     height:600,
-    icon:__dirname+'/img/slytherin.png',
+    icon:__dirname+'/assets/img/b-logo.png',
 
     webPreferences: {
       nodeIntegration: true
@@ -49,7 +49,7 @@ function createAddWindow(){
   addWindow = new BrowserWindow({
     width:450,
     height:500,
-    icon:__dirname+'/img/slytherin.png',
+    icon:__dirname+'/assets/img/b-logo.png',
     title:'Add Items',
     webPreferences: {
       nodeIntegration: true
