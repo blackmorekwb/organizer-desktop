@@ -14,7 +14,7 @@ process.env.NODE_ENV = 'development';
 function createWindow(){
   // CREATE new window
   mainWindow = new BrowserWindow({
-    width:992,
+    width:1050,
     height:600,
     icon:__dirname+'/img/slytherin.png',
 
@@ -23,13 +23,15 @@ function createWindow(){
     }
 
   });
+  // TODO this load url should be a function with the param as the string for the html file to load.
+  // this will let us more easily set up inidividual html objects, snippets, etc
   // LOAD index.html
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'mainWindow.html'),
-    protocol: 'file:', // http?
-    slashes: true
+    protocol: 'file:', // http is possible
+    slashes: true      // will produce: file://dirname/mainWindow.html
   }));
-  // BUILD menu from template
+  // BUILD menu from template // TOP menu bar -> overides the defaults
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   //  Insert Menu
   Menu.setApplicationMenu(mainMenu)
@@ -87,7 +89,7 @@ const mainMenuTemplate = [
       submenu:[
         {
           label: 'Add Item',
-          accelerator: platform == 'MAC' ? '1' : '1',
+          accelerator: platform == 'MAC' ? 'Command+1' : 'Control+1', // These accelerators could be pulled from a yml file, or the DB table.
           click(){
             createAddWindow();
           }
@@ -95,8 +97,7 @@ const mainMenuTemplate = [
         {
           label: 'Clear Items',
           click(){
-            mainWindow.webContents.send('item:clear');
-
+            mainWindow.webContents.send('item:clear'); // TODO change: we want remove item and remove all itemS
           }
         },
         {
