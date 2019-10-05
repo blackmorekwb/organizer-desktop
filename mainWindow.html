@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Organizer</title>
+    <script src="assets/js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="assets/jquery-ui-darkness/jquery-ui.css">
+    <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-darkness/jquery-ui.css"> -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
@@ -12,7 +16,6 @@
     <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -135,10 +138,17 @@
       <h1>hello</h1>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
+    <!-- ** Datepicker ** -->
+    <h2 class="demoHeaders">Datepicker</h2>
+    <div id="datepicker"></div>
+
+    <!-- ** SCRIPTS / JS ** -->
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="assets/jquery-ui-darkness/jquery-ui.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
-    <!--  <script src="assets/js/main.js"></script>   -->
+
     <script src="assets/js/content.js"></script>
 
     <script>
@@ -169,9 +179,6 @@
           ul.className = '';
         }
       }
-    </script>
-
-
+</script>
 </body>
-
 </html>
