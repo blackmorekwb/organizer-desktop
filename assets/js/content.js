@@ -3,7 +3,7 @@ var buttons = document.getElementsByClassName("item");
 var substr = "show";
 
 // for why we used let tmp var after initial i var: https://dzone.com/articles/why-does-javascript-loop-only-use-last-value
-// resource: https://www.youtube.com/watch?v=XQEfWd1lh4Q onclick expand div
+// ^- Solution #3. Instead of "let" inside loop. the try catch is more reliable. the try/catch block has its own scope.
 
 // ** Button Functionality / Routing - collapse window ** //
 for (var iVar = 0; iVar < buttons.length; iVar++) {
@@ -13,35 +13,21 @@ for (var iVar = 0; iVar < buttons.length; iVar++) {
     buttons[i].onclick = function() {
       content = $("#content" + (i+1))[0];
 
-      if (content.className.includes(substr)) {  // shrink the box, if already opened
-        content.style.backgroundColor = "#010201"; //black
-        // Since div's are under bootstrap's Collapse, the "show" class is automatically toggled.
-        //content.className = content.className.replace(" show", '');
-        clearMainContentExcept(i+0);
-      } else {  // expand the box, if not already expanded
-         content.style.backgroundColor = "#008000"; //green
-         //content.className = content.className + " show";
+      // TODO Animation - here inside the buttons onClick
+
+      if (!(content.className.includes(substr))) {  // shrink the box, if already opened
+         clearMainContentExcept(iVar);
       }
     };
   } //catch
 } // for
 
-function clearMainContentExcept(window){
-//  for (var i = 0; i < contents.length; i++){  }
-  //debugger; // for in or with the i interval
-
+// ** Hide all main-content views except the one selected ** //
+function clearMainContentExcept(activeWindow){
   for ( var i = 0; i < contents.length; i++) {
-    //debugger; //first the repace line is bad. get rid of [0] - content is still set from above, not reset in this block
-      //then pull window param in and have it not reset that one.
-    content[0].className = content[0].className.replace(" show", '');
-    //debugger;
+    if (i === activeWindow) { continue; }
+    $("#content" + (i+1)).collapse('hide');
   }
-  /*
-  for (content in contents) {
-    debugger;
-    content[0].className = content[0].className.replace(" show", '');
-    debugger;
-  }  */
 }
 
 // TODO : put this line in serperate JS file
